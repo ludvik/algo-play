@@ -784,4 +784,24 @@ public class MainTest {
     public void testDpFibonacci(){
         Assert.assertEquals(2, slnDp.fibonacci(3));
     }
+
+    @Test
+    public void testLongestAscendingArrayLength(){
+        int[] ary = new int[]{1, 2, 3, 5, 3, 2, 8, 7};
+        Assert.assertEquals(4, slnDp.longestAscending(ary));
+
+        int[] ary1 = new int[]{1, 2, 3, 5, 3, 2, 8, 7, 9, 10};
+        Assert.assertEquals(4, slnDp.longestAscending(ary1));
+
+        int[] ary2 = new int[]{1, 2, 3, 5, 3, 2, 8, 7, 9};
+        Assert.assertEquals(4, slnDp.longestAscending(ary2));
+
+        int[] ary3 = new int[]{1, 2, 4, 5, 3, 2, 8, 9, 10, 11, 3};
+        Assert.assertEquals(5, slnDp.longestAscending(ary3));
+
+        int[] ary4 = new int[0];
+        Assert.assertEquals(0, slnDp.longestAscending(ary4));
+
+        Assert.assertEquals(0, slnDp.longestAscending(null));
+    }
 }
