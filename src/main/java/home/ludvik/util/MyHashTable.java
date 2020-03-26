@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MyHashTable<K, V> {
-
+/*
     public class HashNode<K, V>{
         public K key;
         public V value;
@@ -43,13 +43,13 @@ public class MyHashTable<K, V> {
         while(node.next != null){
             node = node.next;
         }
-        HashMap
 
-
-
+        return 0;
     }
 
     public V get(K key){
-
+        return new (V)Object();
     }
+
+ */
 }
