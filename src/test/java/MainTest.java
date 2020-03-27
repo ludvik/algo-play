@@ -804,4 +804,15 @@ public class MainTest {
 
         Assert.assertEquals(0, slnDp.longestAscending(null));
     }
+
+    @Test
+    public void testCutRope(){
+        System.out.println("0 -> " + slnDp.cutRope(0));
+        System.out.println("1 -> " + slnDp.cutRope(1));
+        System.out.println("2 -> " + slnDp.cutRope(2));
+        System.out.println("3 -> " + slnDp.cutRope(3));
+        System.out.println("4 -> " + slnDp.cutRope(4));
+        System.out.println("5 -> " + slnDp.cutRope(5));
+        System.out.println("6 -> " + slnDp.cutRope(6));
+    }
 }
