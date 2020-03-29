@@ -108,5 +108,66 @@ public class SolutionDP {
         return M[length];
     }
 
+    /**
+     * Array Hopper
+     *
+     * Given an array A of non-negative integers, you are initially positioned at index 0 of the array. A[i] means the
+     * maximum jump distance from that position (you can only jump towards the end of the array). Determine if you are
+     * able to reach the last index.
+     *
+     * Assumptions
+     *
+     * The given array is not null and has length of at least 1.
+     *
+     * Examples
+     *
+     * {1, 3, 2, 0, 3}, we are able to reach the end of array(jump to index 1 then reach the end of the array)
+     * {2, 1, 1, 0, 2}, we are not able to reach the end of array
+     *
+     * /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     * High level idea:
+     * Linear scan the array, starting from the end back to index 0. For each position, try to
+     *
+     * Semantics of the boolean DP array:
+     * M[i] means if the end index is reachable from position i, true or false;
+     *
+     * Base case:
+     * M[length - 1] = true.
+     *
+     * For each step(induction rule):
+     * for every node array[i], scan forward for array[i] of indexes, if there is exists a true in M[...], then M[i] = true,
+     * otherwise false.
+     *
+     * Problem Solving:
+     * return M[0]
+     *
+     */
+    public boolean canJump(int[] array) {
+
+        if(array == null || array.length ==0){
+            return false;
+        }
+
+        if(array.length == 1){
+            return true;
+        }
+
+        // array.length >= 2 below
+        boolean[] M = new boolean[array.length];
+        M[array.length - 1] = true;
+
+        for(int i = array.length - 2; i >= 0; i--){
+            M[i] = false;
+            for(int j = i; j <= i + array[i] && i < array.length; j++){
+                if(M[j] == true){
+                    M[i] = true;
+                    break;
+                }
+                M[i] = M[j];
+            }
+        }
+
+        return M[0];
+    }
 
 }

@@ -815,4 +815,26 @@ public class MainTest {
         System.out.println("5 -> " + slnDp.cutRope(5));
         System.out.println("6 -> " + slnDp.cutRope(6));
     }
+
+    @Test
+    public void testArrayHopper(){
+        int[] ary = new int[0];
+        Assert.assertEquals(false, slnDp.canJump(ary));
+
+        int[] ary1 = new int[]{3};
+        Assert.assertEquals(true, slnDp.canJump(ary1));
+
+        int[] ary2 = new int[]{1, 3};
+        Assert.assertEquals(true, slnDp.canJump(ary2));
+
+        int[] ary3 = new int[]{3, 3};
+        Assert.assertEquals(true, slnDp.canJump(ary3));
+
+        int[] ary4 = new int[]{1, 2, 0, 3};
+        Assert.assertEquals(true, slnDp.canJump(ary4));
+
+        int[] ary5 = new int[]{1, 2, 0, 0, 3};
+        Assert.assertEquals(false, slnDp.canJump(ary5));
+
+    }
 }
