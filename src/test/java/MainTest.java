@@ -837,4 +837,23 @@ public class MainTest {
         Assert.assertEquals(false, slnDp.canJump(ary5));
 
     }
+
+    @Test
+    public void testArrayHopperII(){
+
+        int[] ary1 = new int[]{3};
+        Assert.assertEquals(0, slnDp.minJump(ary1));
+
+        int[] ary2 = new int[]{1, 3};
+        Assert.assertEquals(1, slnDp.minJump(ary2));
+
+        int[] ary3 = new int[]{3, 3};
+        Assert.assertEquals(1, slnDp.minJump(ary3));
+
+        int[] ary4 = new int[]{1, 2, 0, 3};
+        Assert.assertEquals(2, slnDp.minJump(ary4));
+
+        int[] ary5 = new int[]{1, 2, 0, 0, 3};
+        Assert.assertEquals(-1, slnDp.minJump(ary5));
+    }
 }

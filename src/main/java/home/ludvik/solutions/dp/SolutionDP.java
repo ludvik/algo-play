@@ -126,7 +126,7 @@ public class SolutionDP {
      *
      * /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
      * High level idea:
-     * Linear scan the array, starting from the end back to index 0. For each position, try to
+     * Linear scan the array, starting from the end back to index 0. Standing in the end index,
      *
      * Semantics of the boolean DP array:
      * M[i] means if the end index is reachable from position i, true or false;
@@ -165,6 +165,59 @@ public class SolutionDP {
                 }
                 M[i] = M[j];
             }
+        }
+
+        return M[0];
+    }
+
+    /**
+     * Array Hopper II
+     *
+     * Given an array A of non-negative integers, you are initially positioned at index 0 of the array. A[i] means the
+     * maximum jump distance from index i (you can only jump towards the end of the array). Determine the minimum number
+     * of jumps you need to reach the end of array. If you can not reach the end of the array, return -1.
+     *
+     * Assumptions
+     *
+     * The given array is not null and has length of at least 1.
+     *
+     * Examples
+     *
+     * {3, 3, 1, 0, 4}, the minimum jumps needed is 2 (jump to index 1 then to the end of array)
+     * {2, 1, 1, 0, 2}, you are not able to reach the end of array, return -1 in this case.
+     *
+     * High level idea:
+     * Traverse from end to start, to calculate the shortest hops to end for each index.
+     *
+     * Base case:
+     * M[array.length - 1] = 0;
+     *
+     * Semantics of the DP table:
+     * M[i] means starting from index i ,the shortest hops needed of jumping to the end; -1 means unreachable;
+     *
+     * Solving the problem:
+     * return M[0]
+     *
+     *
+     */
+
+    public int minJump(int[] array) {
+
+        if(array.length == 1){
+            return 0;
+        }
+
+        int[] M = new int[array.length];
+
+        M[array.length - 1] = 0; // base case
+        for (int i = array.length - 2; i >= 0; i--){
+            int curMin = Integer.MAX_VALUE;
+            for(int j = i + 1; j <= i + array[i] && j < array.length; j++){
+                if(M[j] > -1) {
+                    curMin = Math.min(curMin, M[j] + 1);
+                }
+            }
+            M[i] = (curMin == Integer.MAX_VALUE) ? -1 : curMin;
         }
 
         return M[0];
